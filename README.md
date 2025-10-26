@@ -1,2 +1,2 @@
-# algoritme-portfolio
-Min EK uddannelses portfolio for algoritmer.
+# Alorithm-portfolio
+Portfolio of algorithms made fall 2025
