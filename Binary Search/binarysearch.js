@@ -1,4 +1,4 @@
-const testValues = [21, 22, 23, 25, 27, 28, 29, 31, 32, 34, 35];
+/*const testValues = [21, 22, 23, 25, 27, 28, 29, 31, 32, 34, 35];
 
 export function binarySearch(x, arr) {
   let low = 0;
@@ -85,4 +85,50 @@ console.log(
 result = binarySearch(2, data);
 console.log(
   `Test for 2: Found ${result.found} at index ${result.index} in ${result.iterations} iterations`
-);
+);*/
+
+
+//Arbejdede ud fra Caspers kode, prøvede mit bedste for at fjerne gentagelser ved test
+
+const testValues = [21, 22, 23, 25, 27, 28, 29, 31, 32, 34, 35];
+
+export function binarySearch(x, arr) {
+  let low = 0;
+  let high = arr.length - 1;
+  let iterations = 0;
+
+  while (low <= high) {
+    iterations++;
+    const middleIndex = Math.floor((low + high) / 2);
+    const middleValue = arr[middleIndex];
+
+    if (middleValue === x) {
+      return { found: true, index: middleIndex, iterations };
+    }
+
+    if (middleValue < x) {
+      low = middleIndex + 1;
+    } else {
+      high = middleIndex - 1;
+    }
+  }
+
+  return { found: false, index: -1, iterations };
+}
+
+let data = [];
+for (let i = 1; i <= 100; i++) {
+  data[i - 1] = i;
+}
+
+// Test Numbers
+const testNumbers = [50, 25, 75, 12, 18, 15, 3, 1, 2];
+
+let result;
+
+for (const num of testNumbers) {
+  result = binarySearch(num, data);
+  console.log(
+    `Test for ${num}: Found ${result.found} at index ${result.index} in ${result.iterations} iterations`
+  );
+}
